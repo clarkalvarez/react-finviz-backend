@@ -94,10 +94,9 @@ exports.create = async (req, res) => {
     });
 };
 
-// Retrieve all Tutorials from the database.
-exports.findAll = async (req, res) => {
-  const stockCode = req.query.stockCode;
-  // var condition = name ? { name: { $regex: new RegExp(name), $options: "i" } } : {};
-  const response = await stockInfo(stockCode);
-  res.send(response);
+// Retrieve all Stocks from the database.
+exports.findAll = (req, res) => {
+  Stocks.find().then((result) => {
+    res.send(result);
+  });
 };

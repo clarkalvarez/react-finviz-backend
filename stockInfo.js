@@ -72,9 +72,9 @@ module.exports = (function () {
     });
 
     //get image chart will comment now
-    // const chart = await page.$(".interactive-chart");
-    // const imageChart = await chart.screenshot({ encoding: "base64" });
-    // stockDetails["image"] = { value: imageChart };
+    const chart = await page.$(".interactive-chart");
+    const imageChart = await chart.screenshot({ encoding: "base64" });
+    stockDetails["image"] = { value: imageChart };
     stockDetails["stockCode"] = { value: stockCode };
     await browser.close();
     return stockDetails;

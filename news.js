@@ -26,9 +26,7 @@ module.exports = (function () {
     });
 
     await browser.close();
-    let news = {
-      stockCode: { value: stockCode },
-    };
+    let news = {};
     let currentDate;
     firstRow.map((e, i) => {
       const newsSplit = e.split(" ");
@@ -50,7 +48,14 @@ module.exports = (function () {
       };
       news[date] = Object.assign(timeObj, news[date]);
     });
-    return await news;
+    // const newsObj = {
+    //   [stockCode]: { news },
+    // };
+    // return await newsObj;
+    const newsObj = {
+      news,
+    };
+    return await newsObj;
   };
   return service;
 })();

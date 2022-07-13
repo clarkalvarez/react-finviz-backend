@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
 const db = require("./api/models");
-var port = process.env.PORT || 4000;
+var PORT = process.env.PORT || 4000;
 
 app.use(
   cors({
@@ -25,10 +25,6 @@ require("./api/routes/stocks.routes")(app);
 require("./api/routes/news.routes")(app);
 // set port, listen for requests
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
-
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
@@ -41,3 +37,7 @@ db.mongoose
     console.log("Cannot connect to the database!", err);
     process.exit();
   });
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
